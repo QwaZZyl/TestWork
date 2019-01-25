@@ -8,9 +8,8 @@ import dagger.android.ContributesAndroidInjector;
 /**
  * Created by Serhii on 24.01.2019.
  */
-
 @Module
-public abstract class ActivityBindingModule {
+abstract class ActivityBindingModule {
 
     @ContributesAndroidInjector(modules = ControlActivityModule.class)
     abstract ControlActivity contributeControlActivityModule();

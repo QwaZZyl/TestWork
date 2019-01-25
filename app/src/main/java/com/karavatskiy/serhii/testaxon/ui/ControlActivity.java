@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import com.karavatskiy.serhii.testaxon.data.remote.retrofit.RandomUserApi;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -19,6 +20,8 @@ public class ControlActivity extends Activity implements HasSupportFragmentInjec
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
 
+    @Inject
+    RandomUserApi randomUserApi;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {

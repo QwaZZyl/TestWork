@@ -11,8 +11,4 @@ import retrofit2.Retrofit;
 @Module
 public class ControlActivityModule {
 
-    @Provides
-    RandomUserApi provideRandomUserApi(Retrofit retrofit) {
-        return retrofit.create(RandomUserApi.class);
-    }
 }

@@ -2,6 +2,7 @@ package com.karavatskiy.serhii.testaxon.di;
 
 import android.app.Application;
 import android.content.Context;
+import com.karavatskiy.serhii.testaxon.data.remote.retrofit.RandomUserApi;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -13,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Serhii on 24.01.2019.
  */
 @Module
-class AppModule {
+public class AppModule {
 
     private static final String BASE_URL = "https://randomuser.me";
 
@@ -30,5 +31,9 @@ class AppModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+    }
+    @Provides
+    RandomUserApi provideRandomUserApi(Retrofit retrofit) {
+        return retrofit.create(RandomUserApi.class);
     }
 }

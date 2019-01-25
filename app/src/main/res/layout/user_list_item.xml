@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivUserIcon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        tools:src="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="@dimen/half_margin"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserIcon"
+        app:layout_constraintLeft_toRightOf="@id/ivUserIcon"
+        app:layout_constraintTop_toTopOf="@id/ivUserIcon"
+        tools:text="Alice" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/half_margin"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvFirstName"
+        app:layout_constraintLeft_toRightOf="@id/tvFirstName"
+        app:layout_constraintTop_toTopOf="@+id/tvFirstName"
+        tools:text="Gonsales" />
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:layout_marginStart="@dimen/half_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/ivUserIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstName"
+        tools:text="Kyiv" />
+</android.support.constraint.ConstraintLayout>

@@ -21,41 +21,40 @@ public class UserListViewHolder extends ViewHolder {
 
     @BindView(R.id.ivUserIcon)
     ImageView ivUserIcon;
-
     @BindView(R.id.tvFirstName)
     TextView tvFirstName;
-
     @BindView(R.id.tvLastName)
     TextView tvLastName;
     @BindView(R.id.tvCity)
     TextView tvAdditional;
-    private Context context;
+    @BindView(R.id.clItemContainer)
+    View clItemContainer;
 
+    private Context context;
     private OnItemClickListener onItemClickListener;
 
     public UserListViewHolder(@NonNull final View itemView, final Context context,
             OnItemClickListener onItemClickListener) {
         super(itemView);
+
         this.context = context;
         this.onItemClickListener = onItemClickListener;
+
         ButterKnife.bind(this, itemView);
     }
 
     public void bind(UserInfo userInfo) {
-        tvFirstName.setText(wrapToCapital(userInfo.getName().getFirst()));
-        tvLastName.setText(wrapToCapital(userInfo.getName().getLast()));
-        tvAdditional.setText(wrapToCapital(userInfo.getLocation().getCity()));
-        ivUserIcon.setOnClickListener(v -> onItemClickListener.onItemClick(userInfo));
+        tvFirstName.setText(userInfo.getName().getFirst());
+        tvLastName.setText(userInfo.getName().getLast());
+        tvAdditional.setText(userInfo.getLocation().getCity());
+
+        clItemContainer.setOnClickListener(v -> onItemClickListener.onItemClick(userInfo));
+
         Glide.with(context)
                 .asBitmap()
                 .apply(new RequestOptions().placeholder(R.drawable.ic_launcher_background))
                 .load(userInfo.getPicture().getMedium())
                 .into(ivUserIcon);
     }
-
-    private String wrapToCapital(String name) {
-        return name.substring(0, 1).toUpperCase() + name.substring(1);
-    }
-
 
 }

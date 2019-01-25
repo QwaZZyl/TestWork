@@ -3,6 +3,7 @@ package com.karavatskiy.serhii.testaxon.data.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.karavatskiy.serhii.testaxon.ui.UiUtils;
 
 public class Name {
 
@@ -25,7 +26,7 @@ public class Name {
     }
 
     public String getFirst() {
-        return first;
+        return  UiUtils.wrapToCapital(first);
     }
 
     public void setFirst(String first) {
@@ -33,7 +34,7 @@ public class Name {
     }
 
     public String getLast() {
-        return last;
+        return UiUtils.wrapToCapital(last);
     }
 
     public void setLast(String last) {

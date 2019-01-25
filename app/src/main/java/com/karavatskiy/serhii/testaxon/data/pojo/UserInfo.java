@@ -3,6 +3,7 @@ package com.karavatskiy.serhii.testaxon.data.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.karavatskiy.serhii.testaxon.ui.UiUtils;
 
 public class UserInfo {
 
@@ -44,7 +45,7 @@ public class UserInfo {
     private String nat;
 
     public String getGender() {
-        return gender;
+        return  UiUtils.wrapToCapital(gender);
     }
 
     public void setGender(String gender) {

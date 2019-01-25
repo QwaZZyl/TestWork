@@ -3,6 +3,7 @@ package com.karavatskiy.serhii.testaxon.data.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.karavatskiy.serhii.testaxon.ui.UiUtils;
 
 public class Location {
 
@@ -34,7 +35,7 @@ public class Location {
     }
 
     public String getCity() {
-        return city;
+        return  UiUtils.wrapToCapital(city);
     }
 
     public void setCity(String city) {
@@ -42,7 +43,7 @@ public class Location {
     }
 
     public String getState() {
-        return state;
+        return  UiUtils.wrapToCapital(state);
     }
 
     public void setState(String state) {

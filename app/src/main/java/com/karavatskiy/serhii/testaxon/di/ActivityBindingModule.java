@@ -14,7 +14,7 @@ import dagger.android.ContributesAndroidInjector;
 abstract class ActivityBindingModule {
 
     @ContributesAndroidInjector(modules = ControlActivityModule.class)
-    abstract ControlActivity contributeControlActivityModule();
+    abstract ControlActivity contributeControlActivity();
 
     @ContributesAndroidInjector(modules = UserListFragmentModule.class)
     abstract UserListFragment contributeUserListFragment();

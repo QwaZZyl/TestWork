@@ -1,16 +1,16 @@
 package com.karavatskiy.serhii.testaxon.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 import com.karavatskiy.serhii.testaxon.R;
 import com.karavatskiy.serhii.testaxon.data.pojo.UserInfo;
-import com.karavatskiy.serhii.testaxon.ui.detailsuserlist.DatailsUserFragmentPresenter;
 import com.karavatskiy.serhii.testaxon.ui.detailsuserlist.DetailsUserFragment;
-import com.karavatskiy.serhii.testaxon.ui.userlist.UserListAdapter.OnItemClickListener;
 import com.karavatskiy.serhii.testaxon.ui.userlist.UserListFragment;
 import com.karavatskiy.serhii.testaxon.ui.userlist.UserListFragment.OnItemSelectedListener;
 import dagger.android.AndroidInjection;
@@ -26,6 +26,8 @@ public class ControlActivity extends AppCompatActivity implements HasSupportFrag
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+
+    private boolean doubleClicked;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -63,5 +65,20 @@ public class ControlActivity extends AppCompatActivity implements HasSupportFrag
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return fragmentDispatchingAndroidInjector;
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count > 1) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            if (doubleClicked) {
+                super.finish();
+            }
+            doubleClicked = true;
+            Toast.makeText(this, getString(R.string.message_double_click_exit), Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(() -> doubleClicked = false, 2000);
+        }
     }
 }

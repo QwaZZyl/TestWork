@@ -19,6 +19,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListViewHolder> {
     private List<UserInfo> userList;
 
     private Context context;
+
     private OnItemClickListener onItemClickListener;
 
     UserListAdapter(Context context, OnItemClickListener onItemClickListener) {
@@ -41,13 +42,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListViewHolder> {
     @NonNull
     @Override
     public UserListViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int i) {
-        UserListViewHolder userListViewHolder;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        userListViewHolder = new UserListViewHolder(inflater.inflate(R.layout.user_list_item,
+        return new UserListViewHolder(inflater.inflate(R.layout.user_list_item_row,
                 viewGroup,
                 false),
                 context, onItemClickListener);
-        return userListViewHolder;
     }
 
     @Override
@@ -57,7 +56,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListViewHolder> {
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return userList == null ? 0 : userList.size();
     }
 
     public interface OnItemClickListener {
